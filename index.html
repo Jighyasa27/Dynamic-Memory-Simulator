@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dynamic Memory Management Simulator</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+</head>
+<body>
+  <h1>Dynamic Memory Management Simulator</h1>
+  <section id="start">
+    <div class="controls" id="choose">
+      <h2>Choose any one of the option.</h2>
+      <button id="s-memory">Memory Allocation</button>
+      <button id="s-paging">Paging</button>
+      <button id="s-segmentation">Segmentation</button>
+      <button id="s-scheduling">Scheduling</button>
+    </div>
+  </section>
+  
+  <!-- Memory Allocation Section -->
+  <section id="memory">
+    <h2>Memory Allocation</h2>
+    <div class="controls">
+      <input type="number" id="blockSize" placeholder="Block Size (KB)" />
+      <button id="addBlock">Add Block</button><br><br>
+
+      <input type="text" id="processId" placeholder="Process ID" />
+      <input type="number" id="processSize" placeholder="Process Size (KB)" />
+      <select id="strategy">
+        <option value="firstFit">First Fit</option>
+        <option value="bestFit">Best Fit</option>
+        <option value="worstFit">Worst Fit</option>
+        <option value="nextFit">Next Fit</option>
+      </select>
+      <button id="allocate">Allocate</button><br><br>
+
+      <input type="text" id="deallocId" placeholder="Deallocate Process ID" />
+      <button id="deallocate">Deallocate</button><br><br>
+
+      <button id="showFragmentation">Show Fragmentation</button>
+    </div>
+    <div id="memory-container"></div>
+    <div id="stats"></div>
+  </section>
+
+  <!-- Paging Section -->
+  <section id="paging">
+    <h2>Paging Simulation</h2>
+    <div class="controls">
+      <input type="number" id="pagingProcessSize" placeholder="Process Size (KB)" />
+      <input type="number" id="pageSize" placeholder="Page Size (KB)" />
+      <input type="number" id="memorySizePaging" placeholder="Memory Size (KB)" />
+      <button id="runPaging">Simulate Paging</button>
+    </div>
+    <pre id="pagingOutput"></pre>
+  </section>
+   
+ 
+  <!-- Segmentation Section -->
+<section id="segmentation">
+  <h2>Segmentation Simulation</h2>
+
+  <div class="controls">
+    <input type="number" id="memorySizeSeg" placeholder="Memory Size (KB)" />
+
+    <h4>Add Segment</h4>
+    <input type="text" id="segmentName" placeholder="Segment Name (e.g. Code)" />
+    <input type="number" id="segmentSize" placeholder="Segment Size (e.g. 30)" />
+    <button id="addSegment">Add Segment</button>
+
+    <div id="segmentList" class="segment-list"></div>
+
+    <button id="runSegmentation">Simulate Segmentation</button>
+  </div>
+
+  <pre id="segmentationOutput"></pre>
+  <h4 id="remainingMemory"></h4>
+  
+
+
+</section>
+
+
+  <!-- Scheduling Section -->
+  <section id="scheduling">
+    <h2>Process Scheduling</h2>
+    <div class="controls">
+      <input type="text" id="schedPid" placeholder="Process ID" />
+      <input type="number" id="burstTime" placeholder="Burst Time" />
+      <button id="addSchedProcess">Add Process</button>
+      <button id="clear">Clear Processes</button>
+      <button id="runFCFS">First Come First Serve</button> 
+      <button id="runSJF">Shortest Job First</button> 
+      <input type="number" id="quantum" placeholder="Quantum (for RR)" />
+      <button id="runRR">Round Robin</button>
+    </div>
+    <div id="process-container"></div>
+    <pre id="scheduleOutput"></pre>
+    <pre id="finalOutput"></pre>
+  </section>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
+
