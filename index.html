@@ -21,26 +21,57 @@
   <section id="memory">
     <h2>Memory Allocation</h2>
     <div class="controls">
-      <input type="number" id="blockSize" placeholder="Block Size (KB)" />
-      <button id="addBlock">Add Block</button><br><br>
+      <div class="control-group">
+        <h4>Memory Configuration</h4>
+        <input type="number" id="blockSize" placeholder="Block Size (KB)" />
+        <button id="addBlock">Add Block</button>
+      </div>
 
-      <input type="text" id="processId" placeholder="Process ID" />
-      <input type="number" id="processSize" placeholder="Process Size (KB)" />
-      <select id="strategy">
-        <option value="firstFit">First Fit</option>
-        <option value="bestFit">Best Fit</option>
-        <option value="worstFit">Worst Fit</option>
-        <option value="nextFit">Next Fit</option>
-      </select>
-      <button id="allocate">Allocate</button><br><br>
-
-      <input type="text" id="deallocId" placeholder="Deallocate Process ID" />
-      <button id="deallocate">Deallocate</button><br><br>
-
-      <button id="showFragmentation">Show Fragmentation</button>
+      <div class="control-group">
+        <h4>Process Allocation</h4>
+        <input type="text" id="processId" placeholder="Process ID" />
+        <input type="number" id="processSize" placeholder="Process Size (KB)" />
+        <select id="strategy">
+          <option value="firstFit">First Fit</option>
+          <option value="bestFit">Best Fit</option>
+          <option value="worstFit">Worst Fit</option>
+          <option value="nextFit">Next Fit</option>
+        </select>
+        <button id="allocate">Allocate</button>
+      </div>
+      
+      <div class="control-group">
+        <h4>Memory Management</h4>
+        <div class="control-actions">
+          <input type="text" id="deallocId" placeholder="Deallocate Process ID" />
+          <button id="deallocate">Deallocate</button>
+        </div>
+        <div class="control-actions">
+          <button id="showFragmentation">Show Fragmentation</button>
+        </div>
+      </div>
     </div>
-    <div id="memory-container"></div>
-    <div id="stats"></div>
+    
+    <div class="memory-visualization">
+      <h3>Memory Map</h3>
+      <div class="memory-summary">
+        <div class="memory-summary-item">
+          <div class="summary-label">Total Blocks</div>
+          <div class="summary-value" id="total-blocks">0</div>
+        </div>
+        <div class="memory-summary-item">
+          <div class="summary-label">Used Blocks</div>
+          <div class="summary-value" id="used-blocks">0</div>
+        </div>
+        <div class="memory-summary-item">
+          <div class="summary-label">Free Blocks</div>
+          <div class="summary-value" id="free-blocks">0</div>
+        </div>
+      </div>
+      <div id="memory-container"></div>
+    </div>
+    
+    <div id="stats" class="stats-panel"></div>
   </section>
 
   <!-- Paging Section -->
@@ -52,6 +83,19 @@
       <input type="number" id="memorySizePaging" placeholder="Memory Size (KB)" />
       <button id="runPaging">Simulate Paging</button>
     </div>
+    
+    <div class="paging-visualization">
+      <div class="memory-visualization">
+        <h3>Physical Memory</h3>
+        <div id="physicalMemoryMap" class="memory-map"></div>
+      </div>
+      
+      <div class="page-table-container">
+        <h3>Page Table</h3>
+        <div id="pageTableDisplay"></div>
+      </div>
+    </div>
+    
     <pre id="pagingOutput"></pre>
   </section>
    
@@ -61,23 +105,43 @@
   <h2>Segmentation Simulation</h2>
 
   <div class="controls">
-    <input type="number" id="memorySizeSeg" placeholder="Memory Size (KB)" />
+    <div class="control-group">
+      <h4>Memory Configuration</h4>
+      <input type="number" id="memorySizeSeg" placeholder="Memory Size (KB)" />
+      <button id="initializeMemory">Initialize Memory</button>
+    </div>
 
-    <h4>Add Segment</h4>
-    <input type="text" id="segmentName" placeholder="Segment Name (e.g. Code)" />
-    <input type="number" id="segmentSize" placeholder="Segment Size (e.g. 30)" />
-    <button id="addSegment">Add Segment</button>
+    <div class="control-group">
+      <h4>Add Segment</h4>
+      <input type="text" id="segmentName" placeholder="Segment Name (e.g. Code)" />
+      <input type="number" id="segmentSize" placeholder="Segment Size (KB)" />
+      
+      <button id="addSegment">Add Segment</button>
+    </div>
+    
+    <div class="control-group">
+      <h4>Memory Management</h4>
+      <input type="text" id="deallocSegment" placeholder="Segment Name to Deallocate" />
+      <button id="deallocateSegment">Deallocate</button>
+      <button id="compactMemory">Compact Memory</button>
+    </div>
 
     <div id="segmentList" class="segment-list"></div>
-
-    <button id="runSegmentation">Simulate Segmentation</button>
   </div>
 
-  <pre id="segmentationOutput"></pre>
-  <h4 id="remainingMemory"></h4>
-  
+  <div class="memory-visualization">
+    <h3>Memory Map</h3>
+    <div id="segmentationMemoryMap" class="memory-map"></div>
+    <div class="memory-legend">
+      <div class="legend-item"><span class="legend-color segment-color"></span> Segment</div>
+      <div class="legend-item"><span class="legend-color free-color"></span> Free Space</div>
+    </div>
+  </div>
 
-
+  <div class="segmentation-info">
+    <div id="segmentationStats" class="stats-panel"></div>
+    <pre id="segmentationOutput"></pre>
+  </div>
 </section>
 
 
@@ -85,21 +149,74 @@
   <section id="scheduling">
     <h2>Process Scheduling</h2>
     <div class="controls">
-      <input type="text" id="schedPid" placeholder="Process ID" />
-      <input type="number" id="burstTime" placeholder="Burst Time" />
-      <button id="addSchedProcess">Add Process</button>
-      <button id="clear">Clear Processes</button>
-      <button id="runFCFS">First Come First Serve</button> 
-      <button id="runSJF">Shortest Job First</button> 
-      <input type="number" id="quantum" placeholder="Quantum (for RR)" />
-      <button id="runRR">Round Robin</button>
+      <div class="control-group">
+        <h4>Add Process</h4>
+        <input type="text" id="schedPid" placeholder="Process ID" />
+        <input type="number" id="burstTime" placeholder="Burst Time" />
+        <input type="number" id="arrivalTime" placeholder="Arrival Time" value="0" />
+        <button id="addSchedProcess">Add Process</button>
+        <button id="clear">Clear Processes</button>
+      </div>
+      
+      <div class="control-group">
+        <h4>Run Scheduling Algorithms</h4>
+        <div class="algorithm-buttons">
+          <button id="runFCFS">First Come First Serve</button> 
+          <button id="runSJF">Shortest Job First</button> 
+          <div class="quantum-control">
+            <input type="number" id="quantum" placeholder="Quantum" value="" />
+            <button id="runRR">Round Robin</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="process-container"></div>
-    <pre id="scheduleOutput"></pre>
-    <pre id="finalOutput"></pre>
+    
+    <div class="process-table-container">
+      <h3>Process Queue</h3>
+      <table id="process-table" class="process-table">
+        <thead>
+          <tr>
+            <th>Process ID</th>
+            <th>Burst Time</th>
+            <th>Arrival Time</th>
+          </tr>
+        </thead>
+        <tbody id="process-table-body"></tbody>
+      </table>
+    </div>
+    
+    <div class="scheduling-results">
+      <div class="gantt-chart-container">
+        <h3>Gantt Chart</h3>
+        <div id="gantt-chart" class="gantt-chart"></div>
+        <div class="gantt-timeline" id="gantt-timeline"></div>
+      </div>
+      
+      <div class="metrics-panel">
+        <h3>Performance Metrics</h3>
+        <div id="avg-metrics" class="avg-metrics"></div>
+        <table id="metrics-table" class="metrics-table">
+          <thead>
+            <tr>
+              <th>Process ID</th>
+              <th>Arrival</th>
+              <th>Burst</th>
+              <th>Finish</th>
+              <th>Turnaround</th>
+              <th>Waiting</th>
+            </tr>
+          </thead>
+          <tbody id="metrics-table-body"></tbody>
+        </table>
+      </div>
+      
+      <div class="execution-log">
+        <h3>Execution Log</h3>
+        <pre id="scheduleOutput"></pre>
+      </div>
+    </div>
   </section>
 
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
-
