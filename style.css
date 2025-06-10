@@ -23,6 +23,7 @@ h1, h2 {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  margin-top: 5px;
 }
 
 .controls {
@@ -192,4 +193,702 @@ textarea {
   margin-top: 10px;
   font-weight: bold;
   color: #a5d6a7; 
+}
+
+/* Enhanced Segmentation Styles */
+.control-group {
+  border-bottom: 1px solid #444;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.control-group button {
+  margin-right: 10px;
+}
+
+.control-group:last-child {
+  border-bottom: none;
+}
+
+.control-group h4 {
+  margin-bottom: 10px;
+  color: #ff9800;
+  display: block;
+  width: 100%;
+}
+
+/* Memory Allocation Styles */
+.memory-visualization {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(142, 142, 142, 0.5);
+}
+
+.memory-visualization h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+.memory-map {
+  height: 250px;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  position: relative;
+  overflow-y: scroll;
+  display: flex;
+}
+
+.memory-block {
+  height: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e1e1e;
+  font-weight: bold;
+  font-size: 0.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.memory-block.segment {
+  background-color: #66bb6a;
+  border-right: 1px solid #1e1e1e;
+}
+
+.memory-block.free {
+  background-color: #90a4ae;
+  border-right: 1px solid #1e1e1e;
+}
+
+.memory-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9em;
+}
+
+.legend-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+}
+
+.segment-color {
+  background-color: #66bb6a;
+}
+
+.free-color {
+  background-color: #90a4ae;
+}
+
+.segmentation-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.stats-panel {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #1e1e1e;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(142, 142, 142, 0.5);
+}
+
+.stats-panel h4 {
+  color: #ff9800;
+  margin-bottom: 10px;
+}
+
+.stats-panel .stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #333;
+}
+
+.stats-panel .stat-row:last-child {
+  border-bottom: none;
+}
+
+.stats-panel .stat-label {
+  font-weight: bold;
+}
+
+.stats-panel .stat-value {
+  color: #b2dfdb;
+}
+
+/* Animation for memory compaction */
+@keyframes compaction {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.compacting {
+  animation: compaction 1s ease;
+}
+
+/* Enhanced Scheduling Styles */
+.algorithm-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.quantum-control {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantum-control input {
+  width: 80px;
+  margin-right: 5px;
+}
+
+/* Process Table Styling */
+.process-table-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(142, 142, 142, 0.5);
+}
+
+.process-table-container h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+.process-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.process-table th,
+.process-table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+.process-table th {
+  background-color: #2c2c2c;
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.process-table tbody tr:hover {
+  background-color: #2c2c2c;
+}
+
+/* Gantt Chart Styling */
+.scheduling-results {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.gantt-chart-container {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(142, 142, 142, 0.5);
+  margin-bottom: 20px;
+}
+
+.gantt-chart-container h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+.gantt-chart {
+  display: flex;
+  height: 60px;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  overflow-x: auto;
+  position: relative;
+}
+
+.gantt-block {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e1e1e;
+  font-weight: bold;
+  position: relative;
+  min-width: 40px;
+  border-right: 1px solid #1e1e1e;
+  transition: all 0.3s ease;
+}
+
+.gantt-block.process {
+  background-color: #66bb6a;
+}
+
+.gantt-block.idle {
+  background-color: #90a4ae;
+}
+
+.gantt-timeline {
+  display: flex;
+  height: 20px;
+  position: relative;
+  margin-bottom: 10px;
+  overflow-x: auto;
+}
+
+.timeline-marker {
+  position: absolute;
+  font-size: 10px;
+  color: #aaa;
+  transform: translateX(-50%);
+}
+
+.timeline-marker::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  height: 5px;
+  width: 1px;
+  background-color: #aaa;
+}
+
+/* Metrics Panel Styling */
+.metrics-panel {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(142, 142, 142, 0.5);
+  margin-bottom: 20px;
+}
+
+.metrics-panel h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+.avg-metrics {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+}
+
+.avg-metric-item {
+  text-align: center;
+}
+
+.avg-metric-label {
+  font-size: 0.9em;
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+.avg-metric-value {
+  font-size: 1.2em;
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.metrics-table th,
+.metrics-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+.metrics-table th {
+  background-color: #2c2c2c;
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.metrics-table tbody tr:hover {
+  background-color: #2c2c2c;
+}
+
+/* Execution Log Styling */
+.execution-log {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(142, 142, 142, 0.5);
+}
+
+.execution-log h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+.execution-log pre {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  color: #b2dfdb;
+}
+
+/* Paging Visualization Styles */
+.paging-visualization {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.paging-visualization > div {
+  flex: 1;
+  min-width: 300px;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(142, 142, 142, 0.5);
+}
+
+.paging-visualization h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
+#physicalMemoryMap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  background-color: #2c2c2c;
+  padding: 10px;
+  border-radius: 8px;
+  min-height: 150px;
+}
+
+.memory-frame {
+  width: 60px;
+  height: 60px;
+  background-color: #90a4ae;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #1e1e1e;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.memory-frame.occupied {
+  background-color: #66bb6a;
+}
+
+.memory-frame .frame-id {
+  font-size: 0.8em;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  color: #333;
+}
+
+.memory-frame .page-id {
+  font-size: 1.2em;
+}
+
+#pageTableDisplay {
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.page-entry {
+  padding: 8px;
+  margin-bottom: 5px;
+  background-color: #3a3a3a;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-entry.valid {
+  border-left: 4px solid #66bb6a;
+}
+
+.page-entry.invalid {
+  border-left: 4px solid #ef5350;
+}
+
+.paging-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+#pagingStats {
+  margin-bottom: 15px;
+}
+
+/* Page fault animation */
+@keyframes pageFault {
+  0% { background-color: #ef5350; }
+  50% { background-color: #ff7043; }
+  100% { background-color: #66bb6a; }
+}
+
+.page-fault {
+  animation: pageFault 1s ease;
+}
+
+/* Memory Allocation Styles */
+.memory-info {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.allocated-color {
+  background-color: #66bb6a;
+}
+
+#memory-container {
+  margin: 10px auto;
+  min-height: 120px;
+  background-color: #2c2c2c;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.block {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #37474f;
+  color: #ffffff;
+  font-size: 0.9em;
+  min-width: 50px;
+  min-height: 100px;
+  text-align: center;
+  animation: fadeIn 0.4s ease-in-out;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.block.free {
+  background-color: #455A64;
+  color: #e0e0e0;
+}
+
+.block-header {
+  font-weight: bold;
+  font-size: 1em;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px 4px 0 0;
+  margin: -10px -10px 8px -10px;
+}
+
+.block-size {
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.process-info {
+  margin: 5px 0;
+}
+
+.process-id {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.process-size {
+  font-size: 0.85em;
+  opacity: 0.9;
+}
+
+.free-label {
+  font-size: 1.2em;
+  font-weight: bold;
+  opacity: 0.7;
+  margin: auto;
+}
+
+.utilization-container {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  height: 15px;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.utilization-bar {
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+}
+
+.utilization-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8em;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.control-group {
+  border-bottom: 1px solid #444;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.control-group:last-child {
+  border-bottom: none;
+}
+
+.control-group h4 {
+  margin-bottom: 10px;
+  color: #ff9800;
+}
+
+/* Control actions for memory management */
+.control-actions {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.control-actions:last-child {
+  margin-bottom: 0;
+}
+
+/* Memory charts for statistics */
+.memory-chart, .fragmentation-chart {
+  height: 20px;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  margin: 15px 0;
+  overflow: hidden;
+  display: flex;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.chart-segment {
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.allocated-segment {
+  background-color: #66bb6a;
+}
+
+.free-segment {
+  background-color: #90a4ae;
+}
+
+.internal-frag-segment {
+  background-color: #ff9800;
+}
+
+.external-frag-segment {
+  background-color: #2196f3;
+}
+
+/* Memory Summary */
+.memory-summary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.memory-summary-item {
+  text-align: center;
+  padding: 0 15px;
+}
+
+.summary-label {
+  font-size: 0.9em;
+  color: #b0bec5;
+  margin-bottom: 5px;
+}
+
+.summary-value {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ff9800;
 }
